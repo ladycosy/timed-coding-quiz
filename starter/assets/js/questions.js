@@ -76,3 +76,15 @@ function endGame() {
 
   document.getElementById("#start-screen").innerHTML = quizTimeOver;
 }
+
+//Storing user's values in local storage//
+function setScore() {
+  localStorage.setItem(
+    "highscoreInitials",
+    document.getElementById("#initials").value
+  );
+  localStorage.setItem("highscore", score);
+  getScore();
+}
+
+
