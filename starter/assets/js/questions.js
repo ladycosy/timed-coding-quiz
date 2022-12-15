@@ -62,7 +62,7 @@ function start() {
 function endGame() {
   clearInterval(timer);
 
-  var quizTimeOver =
+  var quizMessage =
     `
     <h2>Time Over</h2>
     <h3>You scored ` +
@@ -74,7 +74,7 @@ function endGame() {
     <input type="text" id="initials" placeholder="Initials"> 
     <button onclick="setScore()">Submit</button>`;
 
-  document.getElementById("#start-screen").innerHTML = quizTimeOver;
+  document.getElementById("#start-screen").innerHTML = quizMessage;
 }
 
 //Storing user's values in local storage//
@@ -87,4 +87,17 @@ function setScore() {
   getScore();
 }
 
+// Printing user score and initials //
+function getScore() {
+  var quizMessage =
+    `
+    <h2>` +
+    localStorage.getItem("highscoreInitials") +
+    `'s highscore is:</h2>
+    <h1>` +
+    localStorage.getItem("highscore") +
+    `</h1><br> 
+    <button onclick="resetGame()">Go Back</button><button onclick="clearScore()">Clear score</button>`;
 
+  document.getElementById("#start-screen").innerHTML = quizMessage;
+}
