@@ -26,7 +26,7 @@ SO THAT I can gauge my progress compared to my peers
 
 ## Link to Deployed Application
 
-[Live URL]()
+[Live URL](https://ladycosy.github.io/timed-coding-quiz/)
 
 ## Link to Project GitHub Repo
 
