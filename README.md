@@ -1,5 +1,5 @@
 # timed-coding-quiz
-This is a timed coding quiz with multiple-choice questions. The quiz will include time and score count. 
+This is a timed coding quiz with multiple-choice questions. The quiz will include time and score count. The user's data will be stored in the local storage - highscores.  
 
 This app will run in the browser, and will feature dynamically updated HTML and CSS `powered by JavaScript` code that I have written.
 
