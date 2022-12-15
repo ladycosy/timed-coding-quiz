@@ -48,7 +48,7 @@ function start() {
     time--;
     document.getElementById("#time").innerHTML = time;
 
-    //When time run out to 0 Quiz is over//
+    //When time reaches 0 the game is over//
     if (time <= 0) {
       clearInterval(timer);
       endGame();
@@ -56,4 +56,23 @@ function start() {
   }, 6000);
 
   next();
+}
+
+//When time is out - end the game and clear the timer //
+function endGame() {
+  clearInterval(timer);
+
+  var quizTimeOver =
+    `
+    <h2>Time Over</h2>
+    <h3>You scored ` +
+    score +
+    ` /100</h3>
+    <h3>That means you got ` +
+    score / 20 +
+    ` questions correct</h3>
+    <input type="text" id="initials" placeholder="Initials"> 
+    <button onclick="setScore()">Submit</button>`;
+
+  document.getElementById("#start-screen").innerHTML = quizTimeOver;
 }
