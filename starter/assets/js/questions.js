@@ -101,3 +101,11 @@ function getScore() {
 
   document.getElementById("#start-screen").innerHTML = quizMessage;
 }
+
+//Clear the data - user score and initials - that is kept in local storage//
+function clearScore() {
+  localStorage.setItem("highscoreInitials", "");
+  localStorage.setItem("highscore", "");
+
+  resetGame();
+}
