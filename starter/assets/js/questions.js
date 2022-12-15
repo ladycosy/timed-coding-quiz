@@ -34,8 +34,8 @@ var questions = [
 ];
 
 //initizing variables - scores count, question number, remaining time count, timer  //
-var score = 0;
 var currentQuestion = -1;
+var score = 0;
 var time = 0;
 var timer = 0;
 
@@ -108,4 +108,33 @@ function clearScore() {
   localStorage.setItem("highscore", "");
 
   resetGame();
+}
+
+//Function reset//
+function resetGame() {
+  clearInterval(timer);
+  score = 0;
+  currentQuestion = -1;
+  time = 0;
+  timer = null;
+
+  document.getElementById("time").innerHTML = time;
+
+  var quizMessage = `
+    <h1> Code Quiz </h1>
+    <button onclick="start()">Start Quiz</button>`;
+
+  document.getElementById("start-screen").innerHTML = quizMessage;
+}
+
+//If user chooses wrong answer, the timer changes (minus 10)
+function incorrect() {
+  time -= 10;
+  next();
+}
+
+//If user chooses right answer (plus 15)
+function correct() {
+  score += 15;
+  next();
 }
