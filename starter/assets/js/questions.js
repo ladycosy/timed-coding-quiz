@@ -53,7 +53,7 @@ function start() {
       clearInterval(timer);
       endGame();
     }
-  }, 6000);
+  }, 1000);
 
   next();
 }
@@ -137,4 +137,38 @@ function incorrect() {
 function correct() {
   score += 15;
   next();
+}
+
+//questions in loop
+function next() {
+  currentQuestion++;
+
+  if (currentQuestion > questions.length - 1) {
+    endGame();
+    return;
+  }
+  var quizMessage = "<h2>" + questions[currentQuestion].title + "</h2>";
+
+  for (
+    var buttonLoop = 0;
+    buttonLoop < questions[currentQuestion].choices.length;
+    buttonLoop++
+  ) {
+    var buttonCode = '<button onclick="[ANS]">[CHOICE]</button>';
+    buttonCode = buttonCode.replace(
+      "[CHOICE]",
+      questions[currentQuestion].choices[buttonLoop]
+    );
+    if (
+      questions[currentQuestion].choices[buttonLoop] ==
+      questions[currentQuestion].answer
+    ) {
+      buttonCode = buttonCode.replace("[ANS]", "correct()");
+    } else {
+      buttonCode = buttonCode.replace("[ANS]", "wrong()");
+    }
+    quizContent += buttonCode;
+  }
+
+  document.getElementById("start-screen").innerHTML = quizMessage;
 }
