@@ -102,7 +102,7 @@ function getScore() {
   document.getElementById("#start-screen").innerHTML = quizMessage;
 }
 
-//Clear user score and initials that are kept in local storage//
+//Clear the data - user score and initials - that is kept in local storage//
 function clearScore() {
   localStorage.setItem("highscoreInitials", "");
   localStorage.setItem("highscore", "");
