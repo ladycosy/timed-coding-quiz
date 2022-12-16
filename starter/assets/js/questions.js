@@ -36,20 +36,20 @@ var questions = [
 //initizing variables - scores count, question number, remaining time count, timer  //
 var currentQuestion = -1;
 var score = 0;
-var time = 0;
-var timer = 0;
+var timeLeft = 0;
+var timer;
 
 //Starting the timer count//
 function start() {
-  time = 60;
-  document.getElementById("#time").tabIndex.innerHTML = time;
+  timeLeft = 60;
+  document.getElementById("time").innerHTML = timeLeft;
 
   timer = setInterval(function () {
-    time--;
-    document.getElementById("#time").innerHTML = time;
+    timeLeft--;
+    document.getElementById("time").innerHTML = timeLeft;
 
     //When time reaches 0 the game is over//
-    if (time <= 0) {
+    if (timeLeft <= 0) {
       clearInterval(timer);
       endGame();
     }
@@ -67,9 +67,9 @@ function endGame() {
     <h2>Time Over</h2>
     <h3>You scored ` +
     score +
-    ` /100</h3>
+    ` /75</h3>
     <h3>That means you got ` +
-    score / 20 +
+    score / 15 +
     ` questions correct</h3>
     <input type="text" id="initials" placeholder="Initials"> 
     <button onclick="setScore()">Submit</button>`;
@@ -115,10 +115,10 @@ function resetGame() {
   clearInterval(timer);
   score = 0;
   currentQuestion = -1;
-  time = 0;
+  timeLeft = 0;
   timer = null;
 
-  document.getElementById("time").innerHTML = time;
+  document.getElementById("time").innerHTML = timeLeft;
 
   var quizMessage = `
     <h1> Code Quiz </h1>
@@ -129,7 +129,7 @@ function resetGame() {
 
 //If user chooses wrong answer, the timer changes (minus 10)
 function incorrect() {
-  time -= 10;
+  timeLeft -= 10;
   next();
 }
 
