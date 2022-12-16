@@ -62,7 +62,7 @@ function start() {
 function endGame() {
   clearInterval(timer);
 
-  var quizMessage =
+  var quizContent =
     `
     <h2>Time Over</h2>
     <h3>You scored ` +
@@ -74,7 +74,7 @@ function endGame() {
     <input type="text" id="initials" placeholder="Initials"> 
     <button onclick="setScore()">Submit</button>`;
 
-  document.getElementById("#start-screen").innerHTML = quizMessage;
+  document.getElementById("#start-screen").innerHTML = quizContent;
 }
 
 //Storing user's values in local storage//
@@ -89,7 +89,7 @@ function setScore() {
 
 // Printing user score and initials //
 function getScore() {
-  var quizMessage =
+  var quizContent =
     `
     <h2>` +
     localStorage.getItem("highscoreInitials") +
@@ -99,7 +99,7 @@ function getScore() {
     `</h1><br> 
     <button onclick="resetGame()">Go Back</button><button onclick="clearScore()">Clear score</button>`;
 
-  document.getElementById("#start-screen").innerHTML = quizMessage;
+  document.getElementById("#start-screen").innerHTML = quizContent;
 }
 
 //Clear the data - user score and initials - that is kept in local storage//
@@ -120,11 +120,11 @@ function resetGame() {
 
   document.getElementById("time").innerHTML = timeLeft;
 
-  var quizMessage = `
+  var quizContent = `
     <h1> Code Quiz </h1>
     <button onclick="start()">Start Quiz</button>`;
 
-  document.getElementById("start-screen").innerHTML = quizMessage;
+  document.getElementById("start-screen").innerHTML = quizContent;
 }
 
 //If user chooses wrong answer, the timer changes (minus 10)
@@ -147,7 +147,7 @@ function next() {
     endGame();
     return;
   }
-  var quizMessage = "<h2>" + questions[currentQuestion].title + "</h2>";
+  var quizContent = "<h2>" + questions[currentQuestion].title + "</h2>";
 
   for (
     var buttonLoop = 0;
@@ -165,10 +165,10 @@ function next() {
     ) {
       buttonCode = buttonCode.replace("[ANS]", "correct()");
     } else {
-      buttonCode = buttonCode.replace("[ANS]", "wrong()");
+      buttonCode = buttonCode.replace("[ANS]", "incorrect()");
     }
     quizContent += buttonCode;
   }
 
-  document.getElementById("start-screen").innerHTML = quizMessage;
+  document.getElementById("start-screen").innerHTML = quizContent;
 }
